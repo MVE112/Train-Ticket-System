@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <title>Route 4</title>
+    <style>
+        body {
+            background-color: rgb(3 32 108);
+            color: rgb(255 255 255);
+            text-align: center;
+        }
+        h1 {
+            font: normal 50px castellar;
+        }
+        h2{
+            font: normal 30px castellar;
+        }
+        p {
+            font: normal 18px "Times New Roman";
+        }
+        button {
+            font: normal 18px "Times New Roman";
+        }
+        select {
+            font: normal 18px "Times New Roman";
+        }
+        input {
+            font: normal 18px "Times New Roman";
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <h1>Route 4</h1>
+
+
+        <p>
+            How many tickets for adults would you like to purchase?
+            <select onchange="numadults_changed()" ; id="numadults">
+                <option id="selectadultnum">Please select an option</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+            </select>
+        </p>
+
+        <h2 id="one_adult_heading"></h2>
+        <p id="one_adult_paragraph"></p>
+
+        <h2 id="two_adult_heading"></h2>
+        <p id="two_adult_paragraph"></p>
+
+        <h2 id="three_adult_heading"></h2>
+        <p id="three_adult_paragraph"></p>
+
+        <h2 id="four_adult_heading"></h2>
+        <p id="four_adult_paragraph"></p>
+
+
+        <p>
+            How many tickets for children would you like to purchase?
+            <select onchange="numchildren_changed()" ; id="numchildren">
+                <option id="selectchildnum">Please select an option</option>
+                <option>0</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+            </select>
+        </p>
+
+        <h2 id="one_child_heading"></h2>
+        <p id="one_child_paragraph"></p>
+
+        <h2 id="two_child_heading"></h2>
+        <p id="two_child_paragraph"></p>
+
+        <h2 id="three_child_heading"></h2>
+        <p id="three_child_paragraph"></p>
+
+        <h2 id="four_child_heading"></h2>
+        <p id="four_child_paragraph"></p>
+
+        <script>
+            function numadults_changed() {
+                var x = document.getElementById("selectadultnum");
+                var numadults = document.querySelector("#numadults").value;
+
+                if (x) {
+                    x.remove();
+                }
+
+
+                // For one adult
+                if (numadults == 1) {
+                    add_enter_name_adult("one_adult_heading", "one_adult_paragraph", 1);
+                    remove_paragraph_heading("two_adult_heading", "two_adult_paragraph");
+                    remove_paragraph_heading("three_adult_heading", "three_adult_paragraph");
+                    remove_paragraph_heading("four_adult_heading", "four_adult_paragraph");
+                }
+
+                // For two adults
+                else if (numadults == 2) {
+                    add_enter_name_adult("one_adult_heading", "one_adult_paragraph", 1);
+                    add_enter_name_adult("two_adult_heading", "two_adult_paragraph", 2);
+                    remove_paragraph_heading("three_adult_heading", "three_adult_paragraph");
+                    remove_paragraph_heading("four_adult_heading", "four_adult_paragraph");
+                }
+
+                // For three adults
+                else if (numadults == 3) {
+                    add_enter_name_adult("one_adult_heading", "one_adult_paragraph", 1);
+                    add_enter_name_adult("two_adult_heading", "two_adult_paragraph", 2);
+                    add_enter_name_adult("three_adult_heading", "three_adult_paragraph", 3);
+                    remove_paragraph_heading("four_adult_heading", "four_adult_paragraph");
+                }
+
+                // For four adults
+                else if (numadults == 4) {
+                    add_enter_name_adult("one_adult_heading", "one_adult_paragraph", 1);
+                    add_enter_name_adult("two_adult_heading", "two_adult_paragraph", 2);
+                    add_enter_name_adult("three_adult_heading", "three_adult_paragraph", 3);
+                    add_enter_name_adult("four_adult_heading", "four_adult_paragraph", 4);
+                }
+
+                // Cannot enter adult's name(s) until you select the number of adults
+                else {
+                    remove_paragraph_heading("one_adult_heading", "one_adult_paragraph");
+                    remove_paragraph_heading("two_adult_heading", "two_adult_paragraph");
+                    remove_paragraph_heading("three_adult_heading", "three_adult_paragraph");
+                    remove_paragraph_heading("four_adult_heading", "four_adult_paragraph");
+                }
+            }
+
+            function add_enter_name_adult(idh, idp, adult_num) {
+                document.getElementById(idh).innerHTML = "Adult " + adult_num;
+                document.getElementById(idp).innerHTML = "Enter the first name of adult " + adult_num + ": <input />" +
+                    "<br /> <br /> Enter the last name of adult " + adult_num + ": <input />";
+            }
+
+            function numchildren_changed() {
+                var x = document.getElementById("selectchildnum");
+
+                if (x) {
+                    x.remove();
+                }
+
+                var numchildren = document.querySelector("#numchildren").value;
+
+                // For one child
+                if (numchildren == 1) {
+                    add_enter_name_child("one_child_heading", "one_child_paragraph", 1);
+                    remove_paragraph_heading("two_child_heading", "two_child_paragraph");
+                    remove_paragraph_heading("three_child_heading", "three_child_paragraph");
+                    remove_paragraph_heading("four_child_heading", "four_child_paragraph");
+                }
+
+                // For two children
+                else if (numchildren == 2) {
+                    add_enter_name_child("one_child_heading", "one_child_paragraph", 1);
+                    add_enter_name_child("two_child_heading", "two_child_paragraph", 2);
+                    remove_paragraph_heading("three_child_heading", "three_child_paragraph");
+                    remove_paragraph_heading("four_child_heading", "four_child_paragraph");
+                }
+
+                // For three children
+                else if (numchildren == 3) {
+                    add_enter_name_child("one_child_heading", "one_child_paragraph", 1);
+                    add_enter_name_child("two_child_heading", "two_child_paragraph", 2);
+                    add_enter_name_child("three_child_heading", "three_child_paragraph", 3);
+                    remove_paragraph_heading("four_child_heading", "four_child_paragraph");
+                }
+
+                // For four children
+                else if (numchildren == 4) {
+                    add_enter_name_child("one_child_heading", "one_child_paragraph", 1);
+                    add_enter_name_child("two_child_heading", "two_child_paragraph", 2);
+                    add_enter_name_child("three_child_heading", "three_child_paragraph", 3);
+                    add_enter_name_child("four_child_heading", "four_child_paragraph", 4);
+                }
+
+                // For no children
+                else {
+                    remove_paragraph_heading("one_child_heading", "one_child_paragraph");
+                    remove_paragraph_heading("two_child_heading", "two_child_paragraph");
+                    remove_paragraph_heading("three_child_heading", "three_child_paragraph");
+                    remove_paragraph_heading("four_child_heading", "four_child_paragraph");
+                }
+            }
+
+            function add_enter_name_child(idh, idp, child_num) {
+                document.getElementById(idh).innerHTML = "Child " + child_num;
+                document.getElementById(idp).innerHTML = "Enter the first name of child " + child_num + ": <input />" +
+                    "<br /> <br /> Enter the last name of child " + child_num + ": <input />";
+            }
+
+            function remove_paragraph_heading(idh, idp) {
+                document.getElementById(idh).innerHTML = "";
+                document.getElementById(idp).innerHTML = "";
+            }
+        </script>
+
+        <button>Submit</button>
+
+    </form>
+
+    <br />
+    <button onclick="gobackconfirm()">Back</button>
+
+    <script>
+        function gobackconfirm(){
+            if (confirm("Selection not saved. Select cancel if you would still like to purchase a ticket for route 4.")) {
+                location.replace("T.S.R.N.html");
+            };
+        }
+    </script>
+
+</body>
+
+</html>
