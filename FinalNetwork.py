@@ -21,7 +21,7 @@ except mariadb.Error as e:
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s2 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-s.bind(('169.254.37.17',2000))
+s.bind(('169.254.37.17',2000)) #These two IPV4 where taking directly from the ethernet switch box and they are from both of the Libres.
 s2.bind(('169.254.37.17', 2001))
 cur = con.cursor()
 s.listen(5)
